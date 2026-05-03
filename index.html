@@ -85,7 +85,20 @@
             <li>Program formularzowy dla obsługi funkcjonalności Symulatora Bankomatu w języku C#</li>
         </ul>
     </section>
+    <section>
+        <h2>Kontakt</h2>
+        <input type="text" id="imie" placeholder="Imię">
+        <br>
+        <input type="text" id="nazwisko" placeholder="Nazwisko">
+        <br>
+        <input type="text" id="email" placeholder="E-mail">
+        <br>
+        <textarea id="wiadomosc" placeholder="Twoja wiadomość" rows="5" cols="40"></textarea>
+        <br>
+        <button onclick="wyslijWiadomosc()">Wyślij</button>
 
+        <p id="sukces" style="color: green; display: none;">✔ Formularz wypełniony poprawnie!</p>
+    </section>
 </main>
 
 <footer>
