@@ -65,7 +65,7 @@ function pobierzDane() {
     .then(response => response.json())
     .then(data => {
 
-      // UMIEJĘTNOŚCI
+      //umiejętnosci
       const ulUmiejetnosci = document.getElementById("umiejetnosci");
       data.umiejetnosci.forEach(el => {
         const li = document.createElement("li");
@@ -73,7 +73,7 @@ function pobierzDane() {
         ulUmiejetnosci.appendChild(li);
       });
 
-      // PROJEKTY
+      //projekty
       const ulProjekty = document.getElementById("listaProjektow");
       data.projekty.forEach(el => {
         const li = document.createElement("li");
