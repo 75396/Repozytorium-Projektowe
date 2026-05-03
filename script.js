@@ -24,7 +24,7 @@ function wyslijWiadomosc() {
   wiadomosc = document.getElementById("wiadomosc").value.trim();
   bledyDiv = document.getElementById("bledy");
 
-  bledy = [];
+  let bledy = [];
 
   //1. Pola wymagane
   if (imie === "") bledy.push("Imię jest wymagane.");
