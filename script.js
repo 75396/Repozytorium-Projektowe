@@ -57,3 +57,30 @@ function wyslijWiadomosc() {
     bledyDiv.innerHTML = "Wiadomość została wysłana poprawnie!";
   }
 }
+
+document.addEventListener("DOMContentLoaded", pobierzDane);
+
+function pobierzDane() {
+  fetch("data.json")
+    .then(response => response.json())
+    .then(data => {
+
+      // UMIEJĘTNOŚCI
+      const ulUmiejetnosci = document.getElementById("umiejetnosci");
+      data.umiejetnosci.forEach(el => {
+        const li = document.createElement("li");
+        li.textContent = el;
+        ulUmiejetnosci.appendChild(li);
+      });
+
+      // PROJEKTY
+      const ulProjekty = document.getElementById("listaProjektow");
+      data.projekty.forEach(el => {
+        const li = document.createElement("li");
+        li.textContent = el;
+        ulProjekty.appendChild(li);
+      });
+
+    })
+    .catch(err => console.error("Błąd JSON:", err));
+}
