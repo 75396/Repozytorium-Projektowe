@@ -84,3 +84,53 @@ function pobierzDane() {
     })
     .catch(err => console.error("Błąd JSON:", err));
 }
+
+const listaNotatek = document.getElementById("listaNotatek");
+window.addEventListener("DOMContentLoaded", wczytajNotatki);
+
+function zapiszNotatke() {
+    const input = document.getElementById("notatkaInput");
+    if (input.value === "") {
+        return;
+    }
+  
+    //Pobranie zapisanych notatek
+    let notatki = JSON.parse(localStorage.getItem("notatki")) || [];
+    //Dodanie nowej notatki
+    notatki.push(input.value);
+    //Zapis do localStorage
+    localStorage.setItem("notatki", JSON.stringify(notatki));
+    //Dodanie do listy na stronie
+    dodajNotatkeDoListy(input.value);
+    //Wyczyszczenie inputa
+    input.value = "";
+}
+
+function dodajNotatkeDoListy(tresc) {
+    const li = document.createElement("li");
+    li.textContent = tresc + " ";
+    //Przycisk usuń
+    const btnUsun = document.createElement("button");
+    btnUsun.textContent = "Usuń";
+  
+    btnUsun.onclick = function () {
+        li.remove();
+        usunNotatke(tresc);
+    };
+  
+    li.appendChild(btnUsun);
+    listaNotatek.appendChild(li);
+}
+
+function wczytajNotatki() {
+    let notatki = JSON.parse(localStorage.getItem("notatki")) || [];
+    notatki.forEach(notatka => {
+        dodajNotatkeDoListy(notatka);
+    });
+}
+
+function usunNotatke(tresc) {
+    let notatki = JSON.parse(localStorage.getItem("notatki")) || [];
+    notatki = notatki.filter(notatka => notatka !== tresc);
+    localStorage.setItem("notatki", JSON.stringify(notatki));
+}
